@@ -5,7 +5,8 @@ import { StyleSheet, Text, View, Pressable, Image, Button, TextInput } from 'rea
 export default function Log() {
 
 
-  const [text, setText] = useState("");
+  const [id, setId] = useState("");
+  const [pwd, setPwd] = useState("");
 
   return (
 
@@ -14,15 +15,15 @@ export default function Log() {
       <View style={styles.form}>
         <TextInput
           style={styles.input}
-          value={text}
-          onChangeText={setText}
+          value={id}
+          onChangeText={setId}
           placeholder="Identifiant"
           placeholderTextColor="rgba(255,255,255,0.3)" 
         />
         <TextInput
           style={[styles.input, {marginTop:40}]}
-          value={text}
-          onChangeText={setText}
+          value={pwd}
+          onChangeText={setPwd}
           placeholder="Mot de passe"
           placeholderTextColor="rgba(255,255,255,0.3)" 
         />
