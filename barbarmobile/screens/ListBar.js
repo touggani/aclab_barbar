@@ -2,7 +2,10 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, Pressable, Image, FlatList, SafeAreaView, Alert } from 'react-native';
 import { Title } from 'react-native-paper';
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Top from '../components/top';
+
+import Bar from '../components/Bar';
 
 export default function ListBar() {
 
@@ -13,6 +16,7 @@ export default function ListBar() {
       adresse: '186 Rue Solférino, 59800 Lille',
       telephone: '06 61 04 26 53',
       image: '../illustrations/image_bar.png',
+      qrcode : 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png'
 
     },
     {
@@ -21,6 +25,8 @@ export default function ListBar() {
       adresse: '186 Rue Solférino, 59800 Lille',
       telephone: '06 61 04 26 53',
       image: '../illustrations/image_bar.png',
+      qrcode : 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png'
+
 
     },
     {
@@ -29,6 +35,7 @@ export default function ListBar() {
       adresse: '186 Rue Solférino, 59800 Lille',
       telephone: '06 61 04 26 53',
       image: '../illustrations/image_bar.png',
+      qrcode : 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png'
 
     },
     {
@@ -37,6 +44,7 @@ export default function ListBar() {
       adresse: '186 Rue Solférino, 59800 Lille',
       telephone: '06 61 04 26 53',
       image: '../illustrations/image_bar.png',
+      qrcode : 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png'
 
     },
     {
@@ -45,6 +53,7 @@ export default function ListBar() {
       adresse: '186 Rue Solférino, 59800 Lille',
       telephone: '06 61 04 26 53',
       image: '../illustrations/image_bar.png',
+      qrcode : 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png'
 
     },
     {
@@ -53,6 +62,7 @@ export default function ListBar() {
       adresse: '186 Rue Solférino, 59800 Lille',
       telephone: '06 61 04 26 53',
       image: '../illustrations/image_bar.png',
+      qrcode : 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png'
 
     },
     {
@@ -61,40 +71,15 @@ export default function ListBar() {
       adresse: '186 Rue Solférino, 59800 Lille',
       telephone: '06 61 04 26 53',
       image: '../illustrations/image_bar.png',
+      qrcode : 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png'
 
     },
   ];
   const renderItem = ({ item }) => (
-    <Item nom={item.nom} adresse={item.adresse} image={item.image} telephone={item.telephone}/>
+    <Bar item={item}/>
   );
   
-  const [visible, setVisible] = useState(false);
 
-
-
-  const Item = ({ nom, image, adresse, telephone }) => (
-    <View style={styles.item}>
-      <View style={{flex: 2}}>
-        <Image
-            style={styles.image}
-            source={require('../illustrations/image_bar.png')}
-          />
-      </View>
-      <View style={{flexBasis: 100,flex: 3}}>
-        <Text style={styles.title}>{nom}</Text>
-        <Text style={styles.adresse}>{adresse}</Text>
-        <Text style={styles.telephone}>Téléphone: {telephone}</Text>
-        <Pressable style={styles.btn_qrcode} onClick={() => setVisible(!visible)}>
-          <Text style={styles.text}>QRCODE</Text>
-        </Pressable>
-
-      </View>
-      
-
-    </View>
-  );
-
-  
 
 
   return (
@@ -110,6 +95,7 @@ export default function ListBar() {
         style={styles.list}
         showsHorizontalScrollIndicator={false}
       />
+      
       </SafeAreaView>
     </View>
   );
@@ -132,58 +118,11 @@ const styles = StyleSheet.create({
     height:30,
     backgroundColor:'red'
   },
-  item:{
-    paddingLeft:10,
-    paddingRight:10,
-    paddingBottom:30,
-    top:15,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
-    flexDirection:'row',
-    flex: 1,
-    marginTop:10
-  },
-  list:{
-    marginTop:10
-  },
   title:{
     marginTop: 20,
     textAlign: 'center',
     fontSize: 30
   },
-  nom:{
-    marginTop: 20,
-    textAlign: 'center',
-    fontSize: 30
-  },
-  adresse:{
-    textAlign: 'center',
-  },
-  telephone:{
-    textAlign: 'center',
-  },
-  image:{
-    position: 'absolute',
-    height: 150,
-    width: 140,
-    zIndex:100,
-  },
-  btn_qrcode:{
-    backgroundColor: '#962929',
-    textAlign: 'center',
-    top:10,
-    padding: '2%',
-    width:'30%',
-    borderRadius:30,
-    margin: 'auto'
-  }
 
 
 });
