@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Pressable, Image, FlatList, SafeAreaView, Alert } from 'react-native';
 import { Title } from 'react-native-paper';
-import Dialog, { DialogContent } from 'react-native-popup-dialog';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Top from '../components/top';
 
 import Bar from '../components/Bar';
