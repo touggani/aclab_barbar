@@ -26,10 +26,10 @@ export default function Log() {
           source={require('../illustrations/logo_viking.png')}/>
       </View>
       <View style={{flex:2}}>        
-        <Pressable style={styles.buttonConnexion} onPress={() => login.current.open()}>
+        <Pressable style={styles.button} onPress={() => login.current.open()}>
           <Text style={styles.text}>Connexion</Text>
         </Pressable>
-        <Pressable style={styles.buttonConnexion} onPress={() => signin.current.open()}>
+        <Pressable style={styles.button} onPress={() => signin.current.open()}>
           <Text style={styles.text}>S'inscrire</Text>
         </Pressable>
         
@@ -54,7 +54,7 @@ export default function Log() {
       </RBSheet>
       <RBSheet
         ref={signin}
-        height="400"
+        height={400}
         closeOnDragDown={true}
         closeOnPressMask={true}
         customStyles={{
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   flexColumn:{
     flexDirection: "column",
   },
-  buttonConnexion:{
+  button:{
     width: 350,
     backgroundColor:'#D64E4E',
     padding: 20,
