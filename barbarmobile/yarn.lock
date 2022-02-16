@@ -4821,6 +4821,11 @@
     "prop-types" "^15.6.0"
     "react-native-root-siblings" "^3.2.1"
 
+"react-native-raw-bottom-sheet@^2.2.0":
+  "integrity" "sha512-qL4JKIqvbcVxbkKzeh51hjV7suoJN3ouxzvLmOg0FBUV1yiJAfEbacjQdtRCI6+OU5pyGFBIifLsTXcFDwHggg=="
+  "resolved" "https://registry.npmjs.org/react-native-raw-bottom-sheet/-/react-native-raw-bottom-sheet-2.2.0.tgz"
+  "version" "2.2.0"
+
 "react-native-root-siblings@^3.2.1":
   "integrity" "sha512-wOCCtKJteaSIW3K++hzhkfdWRikTqjrG34DnhNDVSzKatuNQyFY1fPBD1YFT/3+kxOIUmNsJdiaPMao9QgoZMA=="
   "resolved" "https://registry.npmjs.org/react-native-root-siblings/-/react-native-root-siblings-3.2.3.tgz"
