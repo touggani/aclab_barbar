@@ -1,4 +1,4 @@
-export const api_address = 'https://d904-2001-861-3505-4e20-3ac3-36ee-5715-c4cb.ngrok.io/api'
+export const api_address = 'https://barbar-api.herokuapp.com/api'
 
 export const login = (username, password) => {
     return fetch(api_address + '/login', {
