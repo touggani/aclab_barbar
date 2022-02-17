@@ -4,6 +4,27 @@ import { Title } from 'react-native-paper';
 import Top from '../components/top';
 
 export default function Home() {
+
+   // Constructor 
+//    constructor(props) {
+//     super(props);
+
+//     this.state = {
+//         items: [],
+//         DataisLoaded: false
+//     };
+// }
+// componentDidMount() {
+//   fetch(
+// "https://barbar-api.herokuapp.com/api/events")
+//       .then((res) => res.json())
+//       .then((json) => {
+//           this.setState({
+//               items: json,
+//               DataisLoaded: true
+//           });
+//       })
+// }
   const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
