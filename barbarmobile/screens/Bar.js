@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList} from 'react-native';
-import { Title } from 'react-native-paper';
 import Top from '../components/top';
 
 export default function Home() {
@@ -10,26 +9,33 @@ export default function Home() {
       nom_bar: 'La Canopée',
       description: 'Ici, le temps ne compte plus vraiment. Grand lieu verdoyant et ouvert au coeur de la ville, on y vient pour boire un coup, bien manger et se détendre. Ce serait pas un peu les vacances !?',
       image_bar: '../illustrations/image_bar.png',
-      image_bde: '../illustrations/image_bar.png',
-
+      adresse: '286 Rue Solférino, 59000 Lille',
+      telephone: '07 85 84 48 69',
+      boissons_phares:'Paix Dieu\nMojito\nPiña Colada'
     }
   ];
   const renderItem = ({ item }) => (
-    <Item nom_bar={item.nom_bar} image_bde={item.image_bde} resume={item.description} image_bar={item.image_bar} />
+    <Item nom_bar={item.nom_bar} adresse={item.adresse} boissons_phares={item.boissons_phares} telephone={item.telephone} resume={item.description} image_bar={item.image_bar} />
   );
-  const Item = ({ nom_bar, image_bde ,image_bar, resume}) => (
+  const Item = ({ nom_bar, adresse, telephone, boissons_phares, resume}) => (
     
     <View style={styles.item}>
 
       <View style={styles.item_desc}>
         <Text style={styles.page_title}>{nom_bar}</Text> 
         <Text style={styles.item_resume}>{resume}</Text>
+        <Text style={styles.item_resume}>Adresse : {adresse}</Text>
+        <Text style={styles.item_resume}>Téléphone : {telephone}</Text>
       </View>
       <View>
         <Image
             style={styles.image_bar} 
             source={require('../illustrations/canopee.jpg')}
           />
+      </View>
+      <View style={styles.item_desc}>
+        <Text style={styles.details_titre}>Boissons phares :</Text> 
+        <Text style={styles.item_detail}>{boissons_phares}</Text>
       </View>
     </View>
   );
@@ -48,6 +54,12 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
+  details_titre:{
+    marginTop: 10,
+    textAlign: 'left',
+    fontWeight: 500,
+    fontSize: 30,
+  },
   page_title:{
     marginTop: 10,
     textAlign: 'center',
@@ -113,6 +125,12 @@ const styles = StyleSheet.create({
   item_resume :{
     paddingTop: 20,
     fontSize: 15
+  },
+  item_detail :{
+    paddingTop: 20,
+    fontSize: 25,
+    fontWeight: 'bold'
   }
+  
 
 });
