@@ -22,15 +22,14 @@ export default function Home() {
     <View style={styles.item}>
 
       <View style={styles.item_desc}>
-              <Title style={styles.page_title}>{nom_bar}</Title> 
+        <Text style={styles.page_title}>{nom_bar}</Text> 
         <Text style={styles.item_resume}>{resume}</Text>
       </View>
       <View>
         <Image
-            style={styles.image_event} 
+            style={styles.image_bar} 
             source={require('../illustrations/canopee.jpg')}
           />
-
       </View>
     </View>
   );
@@ -50,7 +49,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   page_title:{
-    marginTop: 130,
+    marginTop: 10,
     textAlign: 'center',
     fontWeight: 500,
     fontSize: 30,
@@ -66,7 +65,7 @@ const styles = StyleSheet.create({
     width: 40,
     borderRadius: '50%',
   },
-  image_event:{
+  image_bar:{
     height: '100%',
     width: '100%',
     minHeight: 200,
