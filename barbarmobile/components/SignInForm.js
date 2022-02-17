@@ -59,8 +59,6 @@ export default function SignInForm() {
             'bde': bde
         })
 
-        console.log('status', response.status)
-
         if (response.status === 201) {
             setSuccess('Vous avez bien été enregistré !')
         }
