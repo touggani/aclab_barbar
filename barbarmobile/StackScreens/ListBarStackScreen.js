@@ -8,7 +8,7 @@ const listBarStack = createNativeStackNavigator();
 export default function ListBarStackScreen() {
   return (
     <listBarStack.Navigator screenOptions={{ headerShown: false }}>
-      <listBarStack.Screen name="ListBar" component={ListBar}/>
+      {/*<listBarStack.Screen name="ListBar" component={ListBar}/>*/}
       <listBarStack.Screen name="Bar" component={Bar}/>
     </listBarStack.Navigator>
   );
