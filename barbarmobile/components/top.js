@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
 
   oval: {
     position: 'absolute',
-    width: "120%",
+    width: "100%",
     height: 200,
-    borderRadius: 85,
+    borderRadius: 120,
     backgroundColor: "#962929",
     marginTop: -100,
     top: 0,

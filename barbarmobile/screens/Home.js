@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList} from 'react-native';
-
+import { Title } from 'react-native-paper';
+import Top from '../components/top';
 
 export default function Home() {
   const DATA = [
@@ -58,6 +59,9 @@ export default function Home() {
     </View>
   );
   return (
+    <View>
+     <Top style={{flex: 1}}/>
+      <Title style={styles.page_title}>Acceuil</Title>  
     <FlatList
     data={DATA}
     renderItem={renderItem}
@@ -65,11 +69,17 @@ export default function Home() {
     style={styles.list}
     showsHorizontalScrollIndicator={false}
   />
-
+</View>
   );
 }
 
 const styles = StyleSheet.create({
+  page_title:{
+    marginTop: 130,
+    textAlign: 'center',
+    fontWeight: 500,
+    fontSize: 30,
+  },
   container: {
     flex: 1,
     alignContent:'center',
@@ -89,10 +99,13 @@ const styles = StyleSheet.create({
     
   },
   list:{
-    flexWrap: 'wrap' 
+    // flexWrap: 'wrap' ,
+    marginBottom: 20,
   },
   item:{
   borderStyle: ' 1px solid black',
+  boxShadow: 'inset 0px 2px 12px -7px #000000',
+  backgroundColor: 'white',
   flexDirection: 'column',
   maxWidth: 470,
   width: '100%',
@@ -114,7 +127,7 @@ const styles = StyleSheet.create({
   },
   item_desc:{
     paddingBottom: 20,
-    paddingTop: 5,
+    paddingTop: 10,
     paddingLeft:30,
     paddingRight: 30,
   },
