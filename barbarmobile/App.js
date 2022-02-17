@@ -15,7 +15,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
        {isLoggedIn ? 
-       <Stack.Screen name="Main" component={MainStackScreen}/> : <Stack.Screen name="ListBar" component={ListBarStackScreen}/>}
+       <Stack.Screen name="Main" component={MainStackScreen}/> : <Stack.Screen name="Bar" component={ListBarStackScreen}/>}
 
       </Stack.Navigator>
     </NavigationContainer>

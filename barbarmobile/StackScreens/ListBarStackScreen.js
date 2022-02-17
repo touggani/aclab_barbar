@@ -5,6 +5,10 @@ import ListBar from "../screens/ListBar"
 
 const listBarStack = createNativeStackNavigator();
 
+const renderItem = ({ item }) => (
+  <Item nom={item.nom} adresse={item.adresse} image={item.image} telephone={item.telephone}/>
+);
+
 export default function ListBarStackScreen() {
   return (
     <listBarStack.Navigator screenOptions={{ headerShown: false }}>
