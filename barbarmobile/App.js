@@ -7,7 +7,7 @@ import NoStackScreen from './NoStackScreen/NoStack';
 
 const Stack = createNativeStackNavigator();
 
-const isLoggedIn = 0;
+const isLoggedIn = 1;
 
 export default function App() {
   return (
