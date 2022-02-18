@@ -5,8 +5,9 @@ import {save} from "../service/storage";
 import authContext from "../context/authContext";
 
 export default function LogInForm() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
 
     const {setLogged} = useContext(authContext)
 
@@ -18,13 +19,14 @@ export default function LogInForm() {
             setLogged(true)
         }
         else {
-            console.log(response.status)
+            setError('Identifiants invalides.')
         }
     }
 
     return (
 
         <View style={styles.Login}>
+            {error != '' && <Text>{error}</Text>}
             <Text style={styles.title}>Connexion</Text>
             <View style={styles.form}>
                 <TextInput
