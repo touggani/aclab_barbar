@@ -17,6 +17,9 @@ export default function LogInForm() {
             await save('token', data.token)
             setLogged(true)
         }
+        else {
+            console.log(response.status)
+        }
     }
 
     return (

@@ -10,10 +10,6 @@ export default function Log() {
     const login = useRef();
     const signin = useRef();
 
-    useEffect(() => {
-        console.log('hello')
-    }, [])
-
     return (
 
         <View style={[styles.mainContainer, styles.container, styles.flexColumn]}>
