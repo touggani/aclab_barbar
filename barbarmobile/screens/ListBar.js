@@ -82,10 +82,8 @@ export default function ListBar() {
 
   return (
     <View style={styles.container}>
-      <Top style={{flex: 1}}/>
+      <Top/>
       <Title style={styles.title}>Bars partenaires</Title>
-      <View style={styles.bar, {width:'25%'}}/>
-      <SafeAreaView style={{flex: 3}}>
       <FlatList
         data={DATA}
         renderItem={renderItem}
@@ -94,7 +92,6 @@ export default function ListBar() {
         showsHorizontalScrollIndicator={false}
       />
       
-      </SafeAreaView>
     </View>
   );
 }
@@ -102,24 +99,19 @@ export default function ListBar() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  FlatList:{
-    flexGrow: 0,
-    height: '100%'
+    alignContent: 'center',
+    textAlign: 'center',
   },
   texte: {
     flex: 1,
     alignItems: 'center',
   },
-  bar:{
-    width:20,
-    height:30,
-    backgroundColor:'red'
-  },
   title:{
-    marginTop: 20,
+    marginTop: 130,
     textAlign: 'center',
-    fontSize: 30
+    fontWeight: 'bold',
+    fontSize: 30,
+    paddingBottom: 20
   },
 
 

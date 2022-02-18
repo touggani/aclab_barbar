@@ -60,8 +60,8 @@ export default function Home() {
         </View>
     );
     return (
-        <View>
-            <Top style={{flex: 1}}/>
+        <View style={styles.container}>
+            <Top/>
             <Title style={styles.page_title}>Accueil</Title>
             {<FlatList
                 data={bars}
@@ -77,7 +77,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     page_title: {
-        marginTop: 130,
+        marginTop: 100,
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 30,
@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignContent: 'center',
         textAlign: 'center',
-        backgroundColor: '#B2B2'
     },
     list: {
         marginVertical: 20,
