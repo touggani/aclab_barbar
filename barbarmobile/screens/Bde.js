@@ -2,22 +2,22 @@ import React, {useContext, useEffect, useState} from 'react';
 import {StyleSheet, Text, View, Image, FlatList, Modal, Pressable} from 'react-native';
 import {Title} from 'react-native-paper';
 import Top from '../components/top';
-import {getBarsList} from "../service/api_service";
+import {getBarsList, getBdeList} from "../service/api_service";
 import {save} from "../service/storage";
 import authContext from "../context/authContext";
 import modal from "react-native-web/dist/exports/Modal";
 import {CustomModal} from "../components/CustomModal";
 
-export default function Home() {
-    const [bars, setBars] = useState([])
+export default function Bde() {
+    const [bdes, setBdes] = useState([])
     const [modalVisible, setModalVisible] = useState(false)
     const [selectedSchedule, setSelectedSchedule] = useState('')
 
-    const {token} = useContext(authContext)
+    const {user} = useContext(authContext)
 
     useEffect(() => {
         getApiBarsData().then(data => {
-            setBars(data)
+            setBdes(data)
         })
     }, [])
 
@@ -28,7 +28,7 @@ export default function Home() {
     }, [selectedSchedule])
 
     const getApiBarsData = async () => {
-        const response = await getBarsList(token)
+        const response = await getBdeList()
         if (response.status === 200) {
             const data = await response.json()
             return data['hydra:member']
@@ -36,41 +36,36 @@ export default function Home() {
     }
 
     const renderItem = ({item}) => (
-        <Item name={item.name} phone={item.phone} picture={item.picture} schedule={item.schedule}/>
+        <Item name={item.name} phone={item.phone} logo={item.logo} />
     );
-    const Item = ({name, phone, picture, schedule}) => (
-        <View style={styles.item}>
+    const Item = ({name, phone, logo}) => (
+        <View style={[user.bde.name === name ? styles.myItem : styles.item]}>
             <View style={styles.pictureContainer}>
                 <Image
                     style={styles.picture}
-                    source={{uri: 'https://barbar-api.herokuapp.com/img/' + picture}}
+                    source={{uri: 'https://barbar-api.herokuapp.com/img/' + logo}}
                 />
             </View>
             <View style={styles.barMainInfo}>
                 <Text style={styles.barMainName}>{name}</Text>
-                <Text>{phone}</Text>
-            </View>
-            <View style={styles.barSecondaryInfo}>
-                <Pressable onPress={() => {
-                    setSelectedSchedule(schedule)
-                }}>
-                    <Text style={styles.pressableCalendar}>Calendrier</Text>
-                </Pressable>
+                <Text style={styles.barMainPhone}>{phone}</Text>
             </View>
         </View>
     );
     return (
         <View style={styles.container}>
             <Top/>
-            <Title style={styles.page_title}>Liste des bars</Title>
+            <Title style={styles.page_title}>Liste des BDE</Title>
+            <Text style={styles.legend}>* Sur fond rouge le BDE auquel vous appartenez.</Text>
             {<FlatList
-                data={bars}
+                data={bdes}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
                 style={styles.list}
                 showsHorizontalScrollIndicator={false}
             />}
-            {modalVisible && <CustomModal modalVisible={modalVisible} setModalVisible={setModalVisible} selectedSchedule={selectedSchedule} />}
+            {modalVisible && <CustomModal modalVisible={modalVisible} setModalVisible={setModalVisible}
+                                          selectedSchedule={selectedSchedule}/>}
         </View>
     );
 }
@@ -82,6 +77,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
     },
+    legend: {
+        marginTop: 10,
+        textAlign: 'center',
+        fontStyle: 'italic'
+    },
     container: {
         flex: 1,
         alignContent: 'center',
@@ -90,6 +90,16 @@ const styles = StyleSheet.create({
     list: {
         marginVertical: 20,
         paddingHorizontal: 20
+    },
+    myItem: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#E98B8B',
+        marginBottom: 20,
+        padding: 10,
+        borderRadius: 5
     },
     item: {
         flex: 1,
@@ -105,7 +115,7 @@ const styles = StyleSheet.create({
         flexGrow: 1
     },
     picture: {
-        width: 50,
+        width: 150,
         height: 50,
         borderRadius: 5
     },
@@ -113,7 +123,11 @@ const styles = StyleSheet.create({
         flexGrow: 1,
     },
     barMainName: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    barMainPhone: {
+        textAlign: 'center'
     },
     barSecondaryInfo: {
         flexGrow: 1

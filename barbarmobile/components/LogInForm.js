@@ -1,8 +1,9 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {StyleSheet, Text, View, Pressable, Image, Button, TextInput, TouchableOpacity} from 'react-native';
-import {getBdeList, login} from "../service/api_service";
-import {getStorageData, save} from "../service/storage";
+import {getBdeList, getLoggedUser, login} from "../service/api_service";
 import authContext from "../context/authContext";
+import jwt_decode from "jwt-decode";
+import jwtDecode from "jwt-decode";
 
 export default function LogInForm() {
     const [username, setUsername] = useState("")
@@ -16,7 +17,6 @@ export default function LogInForm() {
         if (response.status === 200) {
             const data = await response.json()
             setToken(data.token)
-            await save('token', data.token)
             setLogged(true)
         }
         else {

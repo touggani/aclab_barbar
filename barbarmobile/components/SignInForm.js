@@ -12,7 +12,7 @@ export default function SignInForm() {
     const [mailAddress, setMailAddress] = useState("")
     const [mailError, setMailError] = useState(false)
     const [password, setPassword] = useState("")
-    const [bde, setBde] = useState("")
+    const [bde, setBde] = useState(1)
     const [bdeList, setBdeList] = useState([])
 
     useEffect(() => {
@@ -109,7 +109,7 @@ export default function SignInForm() {
                     <View style={{width: "100%", alignItems: "center"}}>
                         <RNPickerSelect
                             style={selectStyle}
-                            onValueChange={(value) => setBde(value)}
+                            onValueChange={(value) => { setBde(value)}}
                             placeholder={{}}
                             items={customList()}
                             value={bde}

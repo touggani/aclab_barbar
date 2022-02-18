@@ -3,12 +3,12 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 
 
-export default function Setting() {
+export default function Event() {
   console.log("Setting")
   return (
-    <View style={styles.texte}>
-      <Text >Settings by ???</Text>
-    </View>
+      <View style={styles.texte}>
+        <Text >Event by Youssef</Text>
+      </View>
   );
 }
 

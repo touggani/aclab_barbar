@@ -12,12 +12,15 @@ const Stack = createNativeStackNavigator();
 export default function App() {
     const [logged, setLogged] = useState(false)
     const [token, setToken] = useState(false)
+    const [user, setUser] = useState(null)
 
     const authContextValue = {
         logged,
         setLogged,
         token,
-        setToken
+        setToken,
+        user,
+        setUser
     }
 
     return (

@@ -42,3 +42,7 @@ export const getBarsList = async (token) => {
         }
     })
 }
+
+export const getLoggedUser = (id) => {
+    return fetch(api_address + '/users/' + id)
+}
