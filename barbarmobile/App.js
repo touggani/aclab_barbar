@@ -11,15 +11,17 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
     const [logged, setLogged] = useState(false)
+    const [token, setToken] = useState(false)
 
     const authContextValue = {
         logged,
-        setLogged
+        setLogged,
+        token,
+        setToken
     }
 
     return (
         <AuthContext.Provider value={authContextValue}>
-            <StatusBar hidden />
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{headerShown: false}}>
                     {

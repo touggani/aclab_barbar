@@ -1,3 +1,5 @@
+import {getStorageData} from "./storage";
+
 export const api_address = 'https://barbar-api.herokuapp.com/api'
 
 export const login = (username, password) => {
@@ -31,4 +33,12 @@ export const registration = (data) => {
 
 export const getBdeList = () => {
     return fetch(api_address + '/bdes')
+}
+
+export const getBarsList = async (token) => {
+    return fetch(api_address + '/bars', {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
 }

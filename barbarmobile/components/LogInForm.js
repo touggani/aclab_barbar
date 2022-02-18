@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {StyleSheet, Text, View, Pressable, Image, Button, TextInput, TouchableOpacity} from 'react-native';
 import {getBdeList, login} from "../service/api_service";
-import {save} from "../service/storage";
+import {getStorageData, save} from "../service/storage";
 import authContext from "../context/authContext";
 
 export default function LogInForm() {
@@ -9,12 +9,13 @@ export default function LogInForm() {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
 
-    const {setLogged} = useContext(authContext)
+    const {setLogged, setToken} = useContext(authContext)
 
     const log = async () => {
         const response = await login(username, password)
         if (response.status === 200) {
             const data = await response.json()
+            setToken(data.token)
             await save('token', data.token)
             setLogged(true)
         }
