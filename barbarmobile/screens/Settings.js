@@ -7,7 +7,15 @@ export default function Setting() {
   console.log("Setting")
   return (
     <View style={styles.texte}>
-      <Text >Settings by ???</Text>
+      <Text >NOM</Text>
+
+      <View>
+      <Text >adresse mail</Text>
+      <Text >le BDE</Text>
+      <Text >Université</Text>
+      </View>
+
+      <button>Button</button>
     </View>
   );
 }
