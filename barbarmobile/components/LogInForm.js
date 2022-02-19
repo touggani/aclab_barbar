@@ -4,11 +4,11 @@ import {getBdeList, getLoggedUser, login} from "../service/api_service";
 import authContext from "../context/authContext";
 import jwt_decode from "jwt-decode";
 import jwtDecode from "jwt-decode";
+import {showMessage} from "react-native-flash-message";
 
-export default function LogInForm() {
+export default function LogInForm({closeTab}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [error, setError] = useState("")
 
     const {setLogged, setToken} = useContext(authContext)
 
@@ -20,14 +20,21 @@ export default function LogInForm() {
             setLogged(true)
         }
         else {
-            setError('Identifiants invalides.')
+            closeTab()
+            showMessage({
+                message: "Connexion échouée",
+                description: "Veuillez vérifier vos identifiants.",
+                type: "default",
+                backgroundColor: "#E98B8B", // background color
+                color: "#ffffff", // text color
+                style: { paddingTop: 60 }
+            });
         }
     }
 
     return (
 
         <View style={styles.Login}>
-            {error != '' && <Text>{error}</Text>}
             <Text style={styles.title}>Connexion</Text>
             <View style={styles.form}>
                 <TextInput

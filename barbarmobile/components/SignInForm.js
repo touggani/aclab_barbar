@@ -3,8 +3,10 @@ import {StyleSheet, Text, View, Pressable, Image, Button, TextInput} from 'react
 import RNPickerSelect from 'react-native-picker-select'
 import {api_address, getBdeList, registration} from "../service/api_service";
 import {save} from "../service/storage";
+import {showMessage} from "react-native-flash-message";
+import RBSheet from "react-native-raw-bottom-sheet";
 
-export default function SignInForm() {
+export default function SignInForm({closeTab}) {
     const [success, setSuccess] = useState('')
     const [error, setError] = useState('')
     const [step, setStep] = useState(0);
@@ -60,17 +62,31 @@ export default function SignInForm() {
         })
 
         if (response.status === 201) {
-            setSuccess('Vous avez bien été enregistré !')
+            closeTab()
+            showMessage({
+                message: "Inscription réussie",
+                description: "Vous avez bien été enregistré !",
+                type: "default",
+                backgroundColor: "#6A8C26", // background color
+                color: "#ffffff", // text color
+                style: { paddingTop: 60 }
+            });
         }
         else {
-            setError('Il y a eu une error lors de l\'inscription.')
+            closeTab()
+            showMessage({
+                message: "Inscription échouée",
+                description: "Il y a eu une erreur lors de l'inscription..",
+                type: "default",
+                backgroundColor: "#E98B8B", // background color
+                color: "#ffffff", // text color
+                style: { paddingTop: 60 }
+            });
         }
     }
 
     return (
         <View style={styles.Login}>
-            { error !== ''&& <Text>{error}</Text> }
-            { success !== '' && <Text>{success}</Text> }
             <Text style={styles.title}>{step === 0 ? 'Informations générales' : 'Choix du BDE'}</Text>
             <View style={styles.form}>
                 {step === 0 ?

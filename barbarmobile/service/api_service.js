@@ -43,6 +43,28 @@ export const getBarsList = async (token) => {
     })
 }
 
+export const getEventsList = async (token) => {
+    return fetch(api_address + '/events', {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+}
+
 export const getLoggedUser = (id) => {
     return fetch(api_address + '/users/' + id)
+}
+
+export const createParticipation = (token, user, event) => {
+    return fetch(api_address + '/participations', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({
+            'user': user,
+            'event': event,
+        })
+    })
 }

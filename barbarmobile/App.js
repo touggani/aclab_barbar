@@ -6,6 +6,7 @@ import NoStackScreen from './NoStackScreen/NoStack';
 import {useState} from "react";
 import AuthContext from "./context/authContext";
 import {StatusBar} from "react-native";
+import FlashMessage from "react-native-flash-message";
 
 const Stack = createNativeStackNavigator();
 

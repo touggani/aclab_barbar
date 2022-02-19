@@ -1,11 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {StyleSheet, Text, View, Image, FlatList, Modal, Pressable} from 'react-native';
+import {StyleSheet, Text, View, Image, FlatList} from 'react-native';
 import {Title} from 'react-native-paper';
 import Top from '../components/top';
-import {getBarsList, getBdeList} from "../service/api_service";
-import {save} from "../service/storage";
+import {getBdeList} from "../service/api_service";
 import authContext from "../context/authContext";
-import modal from "react-native-web/dist/exports/Modal";
 import {CustomModal} from "../components/CustomModal";
 
 export default function Bde() {
@@ -117,7 +115,8 @@ const styles = StyleSheet.create({
     picture: {
         width: 150,
         height: 50,
-        borderRadius: 5
+        borderRadius: 5,
+        backgroundColor: 'white'
     },
     barMainInfo: {
         flexGrow: 1,

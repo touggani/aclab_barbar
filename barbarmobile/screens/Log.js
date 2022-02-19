@@ -4,15 +4,24 @@ import {StyleSheet, Text, View, Pressable, Image, Button} from 'react-native';
 import LogInForm from "../components/LogInForm"
 import SignInForm from "../components/SignInForm"
 import RBSheet from "react-native-raw-bottom-sheet";
+import FlashMessage from "react-native-flash-message";
 
 
 export default function Log() {
     const login = useRef();
     const signin = useRef();
 
-    return (
+    const closeSignin = () => {
+        signin.current.close()
+    }
 
+    const closeLogin = () => {
+        login.current.close()
+    }
+
+    return (
         <View style={[styles.mainContainer, styles.container, styles.flexColumn]}>
+            <FlashMessage position="top" />
             <View style={styles.container}>
                 <Image
                     style={styles.logo}
@@ -43,7 +52,7 @@ export default function Log() {
                         }
                     }}
                 >
-                    <LogInForm/>
+                    <LogInForm closeTab={closeLogin}/>
                 </RBSheet>
                 <RBSheet
                     ref={signin}
@@ -62,7 +71,7 @@ export default function Log() {
                         }
                     }}
                 >
-                    <SignInForm/>
+                    <SignInForm closeTab={closeSignin}/>
                 </RBSheet>
             </View>
 
