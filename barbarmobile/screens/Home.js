@@ -8,7 +8,7 @@ import authContext from "../context/authContext";
 import modal from "react-native-web/dist/exports/Modal";
 import {CustomModal} from "../components/CustomModal";
 
-export default function Home() {
+export default function Home({navigation}) {
     const [bars, setBars] = useState([])
     const [modalVisible, setModalVisible] = useState(false)
     const [selectedSchedule, setSelectedSchedule] = useState('')
@@ -36,9 +36,9 @@ export default function Home() {
     }
 
     const renderItem = ({item}) => (
-        <Item name={item.name} phone={item.phone} picture={item.picture} schedule={item.schedule}/>
+        <Item item={item} name={item.name} phone={item.phone} picture={item.picture} schedule={item.schedule}/>
     );
-    const Item = ({name, phone, picture, schedule}) => (
+    const Item = ({item, name, phone, picture, schedule}) => (
         <View style={styles.item}>
             <View style={styles.pictureContainer}>
                 <Image
@@ -46,10 +46,12 @@ export default function Home() {
                     source={{uri: 'https://barbar-api.herokuapp.com/img/' + picture}}
                 />
             </View>
-            <View style={styles.barMainInfo}>
+            <Pressable style={styles.barMainInfo} onPress={() => {
+                navigation.navigate('Bar', {bar: item})
+            }}>
                 <Text style={styles.barMainName}>{name}</Text>
                 <Text>{phone}</Text>
-            </View>
+            </Pressable>
             <View style={styles.barSecondaryInfo}>
                 <Pressable onPress={() => {
                     setSelectedSchedule(schedule)

@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, View, Image, Text } from 'react-native'
 import Constants from 'expo-constants'
 
-export default function Top() {
+export default function Top({noMargin}) {
   return (
-    <View style={styles.content}>
+    <View style={[styles.content, {marginTop: noMargin ? 0 : Constants.statusBarHeight}]}>
       <View style={styles.header}>
         <Image
             style={styles.imageTop}
@@ -19,7 +19,6 @@ export default function Top() {
 
 const styles = StyleSheet.create({
   content: {
-    marginTop: Constants.statusBarHeight,
     flex: 1,
     alignItems: 'center',
   },
